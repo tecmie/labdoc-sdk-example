@@ -1,6 +1,10 @@
-import { trpc } from '@tecmie/labdoc-sdk'
+import { LabAIClientProvider } from "@tecmie/labdoc-sdk";
 
 const MyApp = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />
-}
-export default MyApp
+  return (
+    <LabAIClientProvider secret="secret">
+      <Component {...pageProps} />
+    </LabAIClientProvider>
+  );
+};
+export default MyApp;
