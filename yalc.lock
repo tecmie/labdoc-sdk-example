@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "@tecmie/labdoc-sdk": {
+      "signature": "cdd45a29ef80b8d48b1cb87d289ac7e2",
+      "file": true
+    }
+  }
+}
