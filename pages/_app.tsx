@@ -1,10 +1,13 @@
-import { LabAIClientProvider } from "@tecmie/labdoc-sdk";
+import { LabProvider } from "@tecmie/labdoc-sdk";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <LabAIClientProvider secret="secret">
+    <LabProvider 
+      secretOrKey={process.env.NEXT_PUBLIC_LAB_SECRET as string} 
+      // customHttpLink="http://localhost:3001/api/trpc"
+    >
       <Component {...pageProps} />
-    </LabAIClientProvider>
+    </LabProvider>
   );
 };
 export default MyApp;

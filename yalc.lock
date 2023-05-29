@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@tecmie/labdoc-sdk": {
-      "signature": "e735235f504901c647242130f1ed335f",
+      "signature": "6de5631793aaafcdef92b1b35b36fedb",
       "file": true
     }
   }

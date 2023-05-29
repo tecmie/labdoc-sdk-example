@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
 import {
-  LabAIClientProvider,
-  trpc,
-  proxy,
-  usePDFParser,
+  useLabInference
 } from "@tecmie/labdoc-sdk";
+
 
 function Page() {
   const [page, setPage] = useState(1);
   const [file, setFile] = useState<File | null>(null);
   const [doc, setdoc] = useState<File | null>(null);
+
+  const { query } = useLabInference();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -18,7 +18,7 @@ function Page() {
   };
 
   // @ts-ignore
-  const inference = proxy.scanner.read.mutate();
+  // const inference = proxy.scanner.read.mutate();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -31,18 +31,14 @@ function Page() {
       // Create a blob URL from the uploaded file
       const blobUrl = URL.createObjectURL(file);
 
-      // Execute the upload
-      // const pdfData = await executeUpload(blobUrl);
-
-      // @ts-ignore
-      const result = await proxy.scanner.read.mutate({
-        diagnosis: ["reports"],
-      });
+        // Call the inference method
+  const diagnosis = await query({ documents: ["blood sugar"] });
+  console.log({ doc, blobUrl, diagnosis });
       // const result = await inference.mutateAsync({
       //   diagnosis: ["reports"],
       // });;
       // eslint-disable-next-line no-console
-      console.log(result, blobUrl);
+      console.log(diagnosis, blobUrl);
     }
   };
 

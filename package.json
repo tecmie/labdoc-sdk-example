@@ -1,4 +1,5 @@
 {
+  "name": "labdoc-sdk-example",
   "private": true,
   "scripts": {
     "dev": "yalc update @tecmie/labdoc-sdk && next",
